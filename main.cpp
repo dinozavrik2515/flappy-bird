@@ -48,6 +48,7 @@ int main()
 	Image PipeImage;
 	PipeImage.loadFromFile("images\\gljancevoe-serdechko-128x123.png");
 
+
 	Texture PipeTexture;
 	PipeTexture.loadFromImage(PipeImage);
 
