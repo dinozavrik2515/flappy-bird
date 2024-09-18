@@ -4,17 +4,15 @@
 #include "Pipe.h"
 
 using namespace  sf;
-class Score
+
+float score(Pipe pipe, Player Bird, int &scoreplay)
 {
-public:
-	int playerscore = 0;
-	int score(Pipe pipe, Player Bird)
+
+	if (pipe.rect.left == Bird.rect.left && pipe.rect.top == Bird.rect.top)
 	{
-		if (pipe.rect.top == Bird.rect.left && pipe.rect.top == Bird.rect.top)
-		{
-			playerscore++;
-			return playerscore;
-		}
+		scoreplay++;
+
+		return scoreplay++;
 
 	}
-};
+}

@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp> 
+#pragma once
 #include <stdlib.h> 
 #include <time.h> 
 #include "player.h"
@@ -9,11 +9,13 @@
 #include "score.h"
 #include <iostream>
 
-using namespace sf;
-
 int main()
 {
-	RenderWindow window(VideoMode(700, 1000), "test");
+	int scoreplay = 4;
+	std::string strscore;
+	strscore = std::to_string(scoreplay);
+
+	RenderWindow window(VideoMode(700, 1000), "Fly Until You Fail");
 
 	Image FonImage;
 	FonImage.loadFromFile("images\\fon1.jpg");
@@ -56,7 +58,7 @@ int main()
 	PipeSprite.setTexture(PipeTexture);
 	Pipe pipe(PipeTexture);
 
-	
+
 
 	Image GameOverImage;
 	GameOverImage.loadFromFile("images\\Без названия332_20240917204720.png");
@@ -67,8 +69,6 @@ int main()
 	Sprite GameOverSprite;
 	GameOverSprite.setTexture(GameOverTexture);
 
-	Score score;
-	score.score(pipe, Bird);
 
 	Image ScoreImage;
 	ScoreImage.loadFromFile("images\\Без названия336_20240918114836.png");
@@ -81,7 +81,7 @@ int main()
 	ScoreSprite.setPosition(0, -10);
 
 	
-	
+
 	Clock clock;
 
 
@@ -89,87 +89,105 @@ int main()
 
 	while (window.isOpen())
 	{
-		
-			float time = clock.getElapsedTime().asMicroseconds();
-			clock.restart();
-			time = time / 800;
 
-			Event event;
-			while (window.pollEvent(event))
+		float time = clock.getElapsedTime().asMicroseconds();
+		clock.restart();
+		time = time / 800;
+
+		Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == Event::Closed)
 			{
-				if (event.type == Event::Closed)
-				{
-					window.close();
-				}
+				window.close();
 			}
+		}
 
-			if (event.type == Event::MouseButtonPressed)
+		if (event.type == Event::MouseButtonPressed)
+		{
+			if (event.key.code == Mouse::Left)
 			{
-				if (event.key.code == Mouse::Left)
+				if (start)
 				{
-					if (start)
-					{
-						start = false;
-						play = true;
-					}
-
-
-					if (play)
-					{
-						Bird.dy = -0.2;
-					}
+					start = false;
+					play = true;
 				}
 
 
-			}
-			if (play)
-			{
-				if (Bird.rect.left > 10)
+				if (play)
 				{
-					Bird.dx = -0.02;
+					Bird.dy = -0.2;
 				}
-				else
-				{
-					Bird.dx = 0;
-				}
-
-				pipe.dx = -0.6;
 			}
 
 
-
-			Bird.update(time, GameOverTexture, PlayerTexture);
-			if (start)
+		}
+		if (play)
+		{
+			if (Bird.rect.left > 10)
 			{
-				tap.update();
+				Bird.dx = -0.02;
 			}
-			pipe.update();
-			window.clear(Color::White);
-			window.draw(FonSprite);
-			window.draw(Bird.sprite);
-
-			if (start)
+			else
 			{
-				window.draw(TapSprite);
+				Bird.dx = 0;
 			}
 
-			for (int i = 0; i < 2; i++)
-			{
-				window.draw(pipe.sprite[i]);
-			}
-			
-			if (!over)
-			{
-				window.draw(ScoreSprite);
-			}
-			
-			window.display();
+			pipe.dx = -0.6;
+		}
 
-		
-		
+		score(pipe, Bird, scoreplay);
+
+		Bird.update(time, GameOverTexture, PlayerTexture);
+		if (start)
+		{
+			tap.update();
+		}
+		pipe.update();
+		window.clear(Color::White);
+		window.draw(FonSprite);
+		window.draw(Bird.sprite);
+
+		if (start)
+		{
+			window.draw(TapSprite);
+		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			window.draw(pipe.sprite[i]);
+		}
+
+		if (!over)
+		{
+			window.draw(ScoreSprite);
+			strscore = std::to_string(scoreplay);
+			Text text;
+
+			Font font;
+			font.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\CyrilicOld.TTF");
+
+
+			text.setFont(font);
+
+
+			text.setString(strscore);
+
+
+			text.setCharacterSize(40);
+
+			text.setPosition(290, 83);
+
+
+			text.setFillColor(Color::White);
+			window.draw(text);
+		}
+
+		window.display();
+
+
+
 	}
-
-	
 
 	return 0;
 }
