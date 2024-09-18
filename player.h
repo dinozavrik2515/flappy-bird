@@ -35,24 +35,24 @@ public:
 	{
 		if(over)
 		{
-			rect.left += dx * time;
+			rect.left += dx * time; // Обновление горизонтальной позиции игрока
 
 			if (play)
 			{
-				dy = dy + 0.0005 * time;
+				dy = dy + 0.0005 * time; // Увеличение вертикальной скорости под действием гравитации
 			}
 
 			rect.top += dy * time;
 
 			if (rect.top <= 0)
 			{
-				rect.top = 0;
+				rect.top = 0; // Установка игрока на верхнюю границу
 			}
 
-			if (rect.top > 860)
+			if (rect.top > 860) //Проверка, если птичка выходит за нижнюю границу
 			{
-				rect.top = 860;
-				dy = 0;
+				rect.top = 860; // Установка игрока на нижнюю границу
+				dy = 0; // Обнуление вертикальной скорости
 
 				sprite.setTexture(GameOver);
 				sprite.setTextureRect(IntRect(0, 0, 180, 166));
@@ -66,6 +66,7 @@ public:
 
 		}
 
+		
 		
 		sprite.setTextureRect(IntRect(0, 0, 80, 66));
 		sprite.setPosition(rect.left, rect.top);

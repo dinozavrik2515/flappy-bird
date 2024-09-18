@@ -11,9 +11,10 @@ using namespace sf;
 
 int main()
 {
-	int scoreplay = 4;
+	int scoreplayy = 0;
+	int& scoreplay = scoreplayy;
 	std::string strscore;
-	strscore = std::to_string(scoreplay);
+	
 
 	RenderWindow window(VideoMode(700, 1000), "Fly Until You Fail");
 
@@ -83,10 +84,6 @@ int main()
 	
 
 	Clock clock;
-
-
-
-
 	while (window.isOpen())
 	{
 
@@ -116,7 +113,7 @@ int main()
 
 				if (play)
 				{
-					Bird.dy = -0.2;
+					Bird.dy = -0.2; // Подъем птицы при нажатии
 				}
 			}
 
@@ -126,16 +123,18 @@ int main()
 		{
 			if (Bird.rect.left > 10)
 			{
-				Bird.dx = -0.02;
+				Bird.dx = -0.02; // Движение птицы влево
 			}
 			else
 			{
-				Bird.dx = 0;
+				Bird.dx = 0; // Остановка движения, если птица слишком близко к левому краю
 			}
 
-			pipe.dx = -0.6;
+			pipe.dx = -0.6; // Движение сердечек влево
+
 		}
 
+		
 
 		Bird.update(time, GameOverTexture, PlayerTexture);
 		if (start)
@@ -156,7 +155,7 @@ int main()
 		{
 			window.draw(pipe.sprite[i]);
 		}
-
+		
 		if (!over)
 		{
 			window.draw(ScoreSprite);
