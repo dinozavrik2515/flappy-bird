@@ -1,13 +1,13 @@
-#pragma once
+#include <SFML/Graphics.hpp> 
 #include <stdlib.h> 
 #include <time.h> 
 #include "player.h"
 #include "Tap.h"
 #include "Pipe.h"
-#include <sstream>
 #include "Mvar.h"
 #include "score.h"
-#include <iostream>
+
+using namespace sf;
 
 int main()
 {
@@ -136,7 +136,6 @@ int main()
 			pipe.dx = -0.6;
 		}
 
-		score(pipe, Bird, scoreplay);
 
 		Bird.update(time, GameOverTexture, PlayerTexture);
 		if (start)

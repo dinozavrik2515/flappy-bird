@@ -8,10 +8,12 @@ using namespace sf;
 class Pipe
 {
 public:
+	float PipePosition;
 	Sprite sprite[2];
 	int y;
 	float dx;
 	FloatRect rect;
+	
 	
 
 	void Coordinates()
@@ -56,6 +58,7 @@ public:
 			{
 				sprite[i].setPosition(rect.left, rect.top - 1 * i);
 			}
+			
 		}
 
 		
