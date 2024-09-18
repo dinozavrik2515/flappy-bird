@@ -16,7 +16,7 @@ int main()
 	RenderWindow window(VideoMode(700, 1000), "test");
 
 	Image FonImage;
-	FonImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\fon1.jpg");
+	FonImage.loadFromFile("images\\fon1.jpg");
 
 	Texture FonTexture;
 	FonTexture.loadFromImage(FonImage);
@@ -25,7 +25,7 @@ int main()
 	FonSprite.setTexture(FonTexture);
 
 	Image PlayerImage;
-	PlayerImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\1bird.png");
+	PlayerImage.loadFromFile("images\\1bird.png");
 
 	Texture PlayerTexture;
 	PlayerTexture.loadFromImage(PlayerImage);
@@ -35,7 +35,7 @@ int main()
 	Player Bird(PlayerTexture);
 
 	Image TapImage;
-	TapImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\Без названия335_20240918093852.png");
+	TapImage.loadFromFile("images\\Без названия335_20240918093852.png");
 
 	Texture TapTexture;
 	TapTexture.loadFromImage(TapImage);
@@ -46,7 +46,7 @@ int main()
 	Tap tap;
 
 	Image PipeImage;
-	PipeImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\gljancevoe-serdechko-128x123.png");
+	PipeImage.loadFromFile("images\\gljancevoe-serdechko-128x123.png");
 
 	Texture PipeTexture;
 	PipeTexture.loadFromImage(PipeImage);
@@ -58,7 +58,7 @@ int main()
 	
 
 	Image GameOverImage;
-	GameOverImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\Без названия332_20240917204720.png");
+	GameOverImage.loadFromFile("images\\Без названия332_20240917204720.png");
 
 	Texture GameOverTexture;
 	GameOverTexture.loadFromImage(GameOverImage);
@@ -70,7 +70,7 @@ int main()
 	score.score(pipe, Bird);
 
 	Image ScoreImage;
-	ScoreImage.loadFromFile("C:\\Users\\Маша\\Documents\\кукумбер\\проект\\flappy bird\\images\\Без названия336_20240918114836.png");
+	ScoreImage.loadFromFile("images\\Без названия336_20240918114836.png");
 
 	Texture ScoreTexture;
 	ScoreTexture.loadFromImage(ScoreImage);
